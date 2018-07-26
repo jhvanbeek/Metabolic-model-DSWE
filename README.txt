@@ -14,6 +14,6 @@ The results are written to subfolder Results. This directory is made if it does 
 
 By setting p2ck["ensemble_run"] <- 1. in the Run.R script a parameter optimization run can be done. This may take several hours. By setting p2ck["ensemble_run"] <- 0. a single run with a chosen parameter set can be done.
 
-The program code as given here was tested under R version 3.4.1 in RStudio version 1.0.153 under Windows 10.
+The program code as given here was tested with R version 3.4.1 in RStudio version 1.0.153 under Windows 10 and with R version 3.1.0 (32 bit version) not under RStudio.
 
 
