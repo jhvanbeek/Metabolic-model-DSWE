@@ -1,0 +1,190 @@
+
+> # Core model: head and tail of glycolysis, lactate dehydrogenase, oxidative phosphorylation,
+> #             ATP hydrolysis
+> # program and copyrigh .... [TRUNCATED] 
+
+> options(error = browser)
+
+> # load required libraries
+> # Package 'deSolve':  https://cran.r-project.org/web/packages/deSolve/index.html
+> library(deSolve)
+
+> # Core model: head and tail of glycolysis, lactate dehydrogenase, oxidative phosphorylation,
+> #             ATP hydrolysis
+> # program and copyrigh .... [TRUNCATED] 
+
+> options(error = browser)
+
+> # load required libraries
+> # Package 'deSolve':  https://cran.r-project.org/web/packages/deSolve/index.html
+> library(deSolve)
+
+> # Package 'xlsx': https://cran.r-project.org/web/packages/xlsx/index.html
+> if (Sys.getenv("JAVA_HOME")!="") Sys.setenv(JAVA_HOME="")
+
+> library(xlsx)
+
+> # Package 'compiler': http://www.inside-r.org/r-doc/compiler/cmpfun
+> library(compiler)
+
+> library(XLConnect)
+
+> options( java.parameters = "-Xmx4g" )
+
+> xlcFreeMemory()
+
+> y_mem <<- vector()
+
+> cat("\nSTART\n")
+
+START
+
+> # initialize character-variable for the filename
+> filename <- character(0)
+
+> # read filename from the following small file
+> # this file should contain a line stating : filename <- "your_own_choice"
+> source("filename.R")
+
+> # Read Parameter file
+> source("Parameters.R")
+
+> # several sourced files contain function definitions
+> # the statements in these function definitions are not immediately executed
+> 
+> # function d .... [TRUNCATED] 
+
+> # load flux equations
+> source("Function_definitions.R")
+
+> # load initial start values concentration variables to be integrated based on the ODE system
+> source("xstart.R")
+
+> # plot routine
+> source("plotOutLsoda.R")
+
+> # initialize the parameter array
+> p2ck<-p2ck_default
+
+> # initialize the start values for the variables
+> xstart<-xstart_default
+
+> # create directory "Results" if it does not exist
+> mainDir<-"."
+
+> subDir <- "Results"
+
+> if (!file.exists(subDir)){
++     cat("\nDirectory 'Results' does not exist and is created\n")
++     dir.create("./Results") # Windows specific
++ }
+
+> # next statements make it possible to examine concentration vector after R stops a run
+> y_aux <- xstart_default
+
+> names(y_aux) <- names(xstart_default)
+
+> # The model function with the differential equations and evaluation of kinetic equations is loaded
+> # It will be executed by the integration routin .... [TRUNCATED] 
+
+> # the model function is compiled for faster execution
+> lmodel <- cmpfun(model)
+
+> # The model function for the runin part, before glucose is added
+> source("Model_function_runin.R")
+
+> # the model function is compiled for faster execution
+> lmodel_runin <- cmpfun(model_runin)
+
+> # experimental data read from Excel files
+> dataCurve <- read.xlsx("Data_1.xlsx",1)
+
+> # Core model: head and tail of glycolysis, lactate dehydrogenase, oxidative phosphorylation,
+> #             ATP hydrolysis
+> # program and copyrigh .... [TRUNCATED] 
+
+> options(error = browser)
+
+> # load required libraries
+> # Package 'deSolve':  https://cran.r-project.org/web/packages/deSolve/index.html
+> library(deSolve)
+
+> # Package 'xlsx': https://cran.r-project.org/web/packages/xlsx/index.html
+> if (Sys.getenv("JAVA_HOME")!="") Sys.setenv(JAVA_HOME="")
+
+> library(xlsx)
+
+> # Package 'compiler': http://www.inside-r.org/r-doc/compiler/cmpfun
+> library(compiler)
+
+> library(XLConnect)
+
+> options( java.parameters = "-Xmx4g" )
+
+> xlcFreeMemory()
+
+> y_mem <<- vector()
+
+> cat("\nSTART\n")
+
+START
+
+> # initialize character-variable for the filename
+> filename <- character(0)
+
+> # read filename from the following small file
+> # this file should contain a line stating : filename <- "your_own_choice"
+> source("filename.R")
+
+> # Read Parameter file
+> source("Parameters.R")
+
+> # several sourced files contain function definitions
+> # the statements in these function definitions are not immediately executed
+> 
+> # function d .... [TRUNCATED] 
+
+> # load flux equations
+> source("Function_definitions.R")
+
+> # load initial start values concentration variables to be integrated based on the ODE system
+> source("xstart.R")
+
+> # plot routine
+> source("plotOutLsoda.R")
+
+> # initialize the parameter array
+> p2ck<-p2ck_default
+
+> # initialize the start values for the variables
+> xstart<-xstart_default
+
+> # create directory "Results" if it does not exist
+> mainDir<-"."
+
+> subDir <- "Results"
+
+> if (!file.exists(subDir)){
++     cat("\nDirectory 'Results' does not exist and is created\n")
++     dir.create("./Results") # Windows specific
++ }
+
+> # next statements make it possible to examine concentration vector after R stops a run
+> y_aux <- xstart_default
+
+> names(y_aux) <- names(xstart_default)
+
+> # The model function with the differential equations and evaluation of kinetic equations is loaded
+> # It will be executed by the integration routin .... [TRUNCATED] 
+
+> # the model function is compiled for faster execution
+> lmodel <- cmpfun(model)
+
+> # The model function for the runin part, before glucose is added
+> source("Model_function_runin.R")
+
+> # the model function is compiled for faster execution
+> lmodel_runin <- cmpfun(model_runin)
+
+> # experimental data read from Excel files
+> dataCurve <- read.xlsx("Data_1.xlsx",1)
